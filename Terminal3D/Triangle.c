@@ -2,13 +2,13 @@
 
 int main()
 {
-	struct screen tela;
-	struct coord3D triangle[3], copy[3], center_mass;
+	screen scr;
+	coord3D triangle[3], copy[3], center_mass;
 	float angle;
 
-	init(&tela, 20, 20, ' ');
+	init(&scr, 20, 20, ' ');
 
-	clock_t ti;
+	clock_t initial_time;
 	double delta_t;
 	
 	/* Vertices */
@@ -39,16 +39,16 @@ int main()
 	/*-----------*/
 
 	int size_r;
-	struct coord3D *resultant_obj;
+	coord3D *resultant_obj;
 
 	printf("%d\n", size_r);
 
-	ti = clock();
+	initial_time = clock();
 	angle = 0;
 
 	while(1)
 	{
-		delta_t = (double)(clock() - ti) / CLOCKS_PER_SEC;
+		delta_t = (double)(clock() - initial_time) / CLOCKS_PER_SEC;
 		if(delta_t >= 0.008)
 		{
 			translate(triangle, 3, -center_mass.x, -center_mass.y, -center_mass.z);
@@ -60,9 +60,9 @@ int main()
 			resultant_obj = build_lines(triangle, ib, elements, &size_r);
 			ortographic(resultant_obj, size_r);
 
-			clr_scr(&tela);
-				point_to_scr(&tela, resultant_obj, size_r);
-			show_scr(tela);
+			clr_scr(&scr);
+				point_to_scr(&scr, resultant_obj, size_r);
+			show_scr(scr);
 
 			copy_array(copy, triangle, 3);
 
@@ -70,7 +70,7 @@ int main()
 			if(angle == 361)
 				angle = 0;
 			
-			ti = clock();
+			initial_time = clock();
 		}
 	}
 }

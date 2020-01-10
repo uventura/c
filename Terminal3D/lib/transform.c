@@ -1,5 +1,5 @@
 /* Transformations */
-void translate(struct coord3D *points, int size, float xt, float yt, float zt)
+void translate(coord3D *points, int size, float xt, float yt, float zt)
 {
 	int i;
 	for(i = 0; i < size; ++i)
@@ -10,7 +10,7 @@ void translate(struct coord3D *points, int size, float xt, float yt, float zt)
 	}
 }
 
-void scale(struct coord3D *points, int size, float xs, float ys, float zs)
+void scale(coord3D *points, int size, float xs, float ys, float zs)
 {
 	int i;
 	for(i = 0; i < size; ++i)
@@ -21,8 +21,10 @@ void scale(struct coord3D *points, int size, float xs, float ys, float zs)
 	}
 }
 
-void rotate(struct coord3D *points, int size, float angle_x, float angle_y, float angle_z)
+void rotate(coord3D *points, int size, float angle_x, float angle_y, float angle_z)
 {
+	/* The angles are given in degrees */
+
 	angle_x = rad(angle_x);
 	angle_y = rad(angle_y);
 	angle_z = rad(angle_z);

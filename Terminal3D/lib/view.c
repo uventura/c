@@ -1,5 +1,5 @@
 /* View */
-void ortographic(struct coord3D *points, int size)
+void ortographic(coord3D *points, int size)
 {
 	int i;
 	for(i = 0; i < size; ++i)

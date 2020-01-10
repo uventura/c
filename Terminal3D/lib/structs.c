@@ -1,10 +1,10 @@
-struct screen
+typedef struct
 {
 	int width, height;
 	char **elements, symbol;
-};
+} screen;
 
-struct coord3D
+typedef struct
 {
 	float x, y, z;
-};
+} coord3D;

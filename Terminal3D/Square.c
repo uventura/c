@@ -2,13 +2,13 @@
 
 int main()
 {
-	struct screen tela;
-	struct coord3D square[4], copy[4], center_mass;
+	screen scr;
+	coord3D square[4], copy[4], center_mass;
 
-	clock_t ti;
+	clock_t initial_time;
 	double delta_t;
 
-	init(&tela, 40, 20, '.');
+	init(&scr, 40, 20, '.');
 
 	/* Square */
 	square[0] = set_point(0, 0, 0);
@@ -40,34 +40,34 @@ int main()
 
 	/* Resultant Matrix */
 	int size_r;
-	struct coord3D *r;
+	coord3D *result;
 
 	/*----------*/
-	ti = clock();
-	float ang = 0;
+	initial_time = clock();
+	float angle = 0;
 
 	while(1)
 	{
-		delta_t = (double)(clock() - ti) / CLOCKS_PER_SEC;
+		delta_t = (double)(clock() - initial_time) / CLOCKS_PER_SEC;
 		if(delta_t >= 0.01)
 		{
 			translate(square, 4, -center_mass.x, -center_mass.y, -center_mass.z);
-				rotate(square, 4, 0, 0, ang);
+				rotate(square, 4, 0, 0, angle);
 			translate(square, 4, center_mass.x, center_mass.y, center_mass.z);
 
 			ortographic(square, 4);
 
-			r = build_lines(square, ibo, elements, &size_r);
-			ortographic(r, size_r);
+			result = build_lines(square, ibo, elements, &size_r);
+			ortographic(result, size_r);
 
-			clr_scr(&tela);
-				point_to_scr(&tela, r, size_r);
-			show_scr(tela);
+			clr_scr(&scr);
+				point_to_scr(&scr, result, size_r);
+			show_scr(scr);
 
 			copy_array(copy, square, 4);
 
-			ang++;
-			ti = clock();
+			angle++;
+			initial_time = clock();
 		}
 	}
 }

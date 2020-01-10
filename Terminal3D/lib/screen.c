@@ -1,6 +1,6 @@
 /* Screen Settings */
 
-void init(struct screen *scr, int w, int h, char sym)
+void init(screen *scr, int w, int h, char sym)
 {
 	scr->width = w;
 	scr->height = h;
@@ -18,7 +18,7 @@ void init(struct screen *scr, int w, int h, char sym)
 	}
 }
 
-void show_scr(struct screen scr)
+void show_scr(screen scr)
 {
 	int i, j;
 
@@ -30,7 +30,7 @@ void show_scr(struct screen scr)
 	}
 }
 
-void clr_scr(struct screen *scr)
+void clr_scr(screen *scr)
 {
 	int i, j;
 
