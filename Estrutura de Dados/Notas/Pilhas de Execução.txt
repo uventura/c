@@ -1,0 +1,16 @@
+    Quando uma função é chamada, é utilizado o método de pilha para que
+isso ocorra, basicamente a partir do momento que a função é chamada, se
+ela possui um parâmetro n para ser dado, quando a função é chamada ela
+copia o valor que foi definido para o local onde se encontra n.
+    Exemplificando:
+
+    int func(int n)
+    
+    int a = 5;
+    func(a)
+
+    nesse caso, você terá a atribuição de a, após feita a atribuição de a,
+quando func(a) é chamada, ela irá copiar o valor existente em a, para a var-
+iável temporária n. Chamo de temporária pois o escopo de uma função é temporá-
+rio. Por este fato um argumento não muda seu valor quando é passado em um função
+a não ser que sejam globais ou sejam utilizados ponteiros.
